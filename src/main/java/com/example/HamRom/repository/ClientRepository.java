@@ -1,4 +1,27 @@
 package com.example.HamRom.repository;
 
-public interface ClientRepository {
+import com.example.HamRom.entity.Client;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+
+
+public interface ClientRepository extends JpaRepository<Client, Integer> {
+
+    Client findByFirstName(String firstName);
+    Client findByLastName(String lastName);
+    Client findByNumar(Integer numar);
+    Client findByeMail(String eMail);
+    Client findByAdresa(String adresa);
+
+
+
+   /* @Modifying
+    @Query("Updata Client v SET v.eMail = :eMail Where v.id = :id")
+    public void updateClientType(String eMail, int id);
+*/
+
+
 }
