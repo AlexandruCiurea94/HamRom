@@ -15,7 +15,9 @@ import java.util.Optional;
 public class ClientService {
 
     @Autowired
-    private ClientRepository repository;
+    public ClientRepository repository;
+    public void save(Client client){saveClient(client);}
+
 
     public Client saveClient(Client client) {
         return repository.save(client);
@@ -52,6 +54,7 @@ public class ClientService {
     public Client getByAdresa(String adresa) {
         return repository.findByAdresa(adresa);
     }
+
 
 
     public String deleteClient(int id) {

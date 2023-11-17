@@ -1,12 +1,10 @@
 package com.example.HamRom.controller;
 
 import com.example.HamRom.entity.Client;
+import com.example.HamRom.repository.ClientRepository;
 import com.example.HamRom.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,16 +16,19 @@ public class ClientController {
     @Autowired
     public ClientService clientService;
 
+    public ClientController(ClientService service){this.clientService= service;}
+    public ClientRepository clientRepository;
+
     @PostMapping("/addClient")
-    public Client addclient(@RequestBody Client client) {
-        return clientService.saveClient(client);
+    public Client addClient(@RequestBody Client client) {
+        return clientRepository.save(client);
 
     }
 
-    @PostMapping("/addClients")
-    public List<Client> addClients(@RequestBody List<Client> clients) {
-        return clientService.saveClients(clients);
-    }
+   @GetMapping("/{id}")
+public List<Client> allClients(){return clientRepository.findAll();}
+
+
 
 
 

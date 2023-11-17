@@ -28,6 +28,10 @@ public class Client {
     private Double numar;
     @Column(name = "adresa")
     private String adresa;
+    @Enumerated(STRING)
+    @Column(name = "type")
+    private ClientType type;
+
 
     public int getId() {
         return id;

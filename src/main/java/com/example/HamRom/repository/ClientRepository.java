@@ -18,10 +18,7 @@ public interface ClientRepository extends JpaRepository<Client, Integer> {
 
 
 
-   /* @Modifying
-    @Query("Updata Client v SET v.eMail = :eMail Where v.id = :id")
-    public void updateClientType(String eMail, int id);
-*/
+
 
 
 }
