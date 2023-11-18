@@ -1,16 +1,26 @@
 package com.example.HamRom.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
 
-@Embeddable
+import java.util.UUID;
+
+@Entity
+@Table(name = "produs", schema ="magazin" )
 public class Produs {
+    @Id
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid2")
+    @Column(name = "id")
+    private UUID id;
     @Column(name = "calitate")
     private String calitate;
     @Column(name = "dimensiune")
     private int dimensiune;
     @Column(name = "greutate")
     private int greutate;
+
+
 
 
     public Produs() {

@@ -4,17 +4,17 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
+import java.util.List;
 import java.util.UUID;
 
 import static jakarta.persistence.EnumType.STRING;
 
 
 @Entity
-@Table(name = "client" ,schema = "client")
+@Table(name = "client" ,schema = "magazin")
 public class Client {
 
    @Id
-   @Type(type = "pg-uuid")
    @GeneratedValue(generator = "system-uuid")
    @GenericGenerator(name = "system-uuid", strategy = "uuid2")
    @Column(name = "id")
@@ -33,6 +33,9 @@ public class Client {
     @Column(name = "type")
     private ClientType type;
 
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    @JoinColumn(name = "id", referencedColumnName = "id", nullable = false)
+    private List<Produs> produses;
 
     public UUID getId() {
         return id;
