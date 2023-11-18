@@ -1,66 +1,57 @@
 package com.example.HamRom.service;
 
+import com.example.HamRom.dto.ClientDto;
 import com.example.HamRom.entity.Client;
 import com.example.HamRom.repository.ClientRepository;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @Transactional
 
 public class ClientService {
 
-    @Autowired
+    public ClientStore clientStore;
+
     public ClientRepository repository;
-    public void save(Client client){saveClient(client);}
 
-
-    public Client saveClient(Client client) {
-        return repository.save(client);
+    public ClientService(ClientStore clientStore, ClientRepository repository) {
+        this.clientStore = clientStore;
+        this.repository = repository;
     }
 
-    public List<Client> saveClients(List<Client> clients) {
-        return repository.saveAll(clients);
+    public Client saveClient(ClientDto clientDto) {
+        return clientStore.save(clientDto);
     }
 
-    public List<Client> getClients() {
-        return repository.findAll();
+    public List<Client> saveClients(List<ClientDto> clients) {
+        return clientStore.saveAll(clients);
     }
 
-    public Optional<Client> getClientById(int id) {
-        return repository.findById(id);
+    public List<ClientDto> getAllClients() {
+        return clientStore.getAllClients();
     }
 
-    public Client getClientByFirstName(String firstName) {
-        return repository.findByFirstName(firstName);
+    public ClientDto getClientById(UUID id) {
+        return clientStore.getClient(id);
     }
 
-    public Client getClientByLastName(String lastName) {
-        return repository.findByLastName(lastName);
+    public ClientDto update(ClientDto clientDto){
+        if (!clientExist(clientDto.getClientId())){
+            throw new IllegalArgumentException("Clientul nu este gasit");
+        }
+        return clientStore.update(clientDto);
     }
 
-    public Client getClientByNumar(Integer numar) {
-        return repository.findByNumar(numar);
+    public Boolean clientExist(String clientDto){
+        return clientStore.clientExists(clientDto);
     }
 
-    public Client getClientByeMail(String eMail) {
-        return repository.findByeMail(eMail);
+    public void deleteClient(UUID id) {
+        clientStore.deleteClient(id);
     }
-
-    public Client getByAdresa(String adresa) {
-        return repository.findByAdresa(adresa);
-    }
-
-
-
-    public String deleteClient(int id) {
-        repository.deleteById(id);
-        return "client sters" + id;
-    }
-
 
 }

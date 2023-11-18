@@ -1,23 +1,13 @@
-package com.example.HamRom.entity;
+package com.example.HamRom.dto;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
+public class ProdusDto {
 
-@Embeddable
-public class Produs {
-    @Column(name = "calitate")
     private String calitate;
-    @Column(name = "dimensiune")
     private int dimensiune;
-    @Column(name = "greutate")
     private int greutate;
 
 
-    public Produs() {
-        this.calitate = calitate;
-        this.dimensiune = dimensiune;
-        this.greutate = greutate;
-    }
+
 
     public String getCalitate() {
         return calitate;

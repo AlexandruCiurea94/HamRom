@@ -1,47 +1,25 @@
-package com.example.HamRom.entity;
+package com.example.HamRom.dto;
 
-import jakarta.persistence.*;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
+import com.example.HamRom.entity.ClientType;
 
-import java.util.UUID;
+public class ClientDto {
 
-import static jakarta.persistence.EnumType.STRING;
-
-
-@Entity
-@Table(name = "client" ,schema = "client")
-public class Client {
-
-   @Id
-   @Type(type = "pg-uuid")
-   @GeneratedValue(generator = "system-uuid")
-   @GenericGenerator(name = "system-uuid", strategy = "uuid2")
-   @Column(name = "id")
-    private UUID id;
-    @Column(name = "firt_name")
+    private String clientId;
     private String firstName;
-    @Column(name = "last_name")
     private String lastName;
-    @Column(name = "email")
     private String eMail;
-    @Column(name = "numar")
     private Double numar;
-    @Column(name = "adresa")
     private String adresa;
-    @Enumerated(STRING)
-    @Column(name = "type")
     private ClientType type;
 
 
-    public UUID getId() {
-        return id;
+    public String getClientId() {
+        return clientId;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
     }
-
     public String getFirstName() {
         return firstName;
     }
