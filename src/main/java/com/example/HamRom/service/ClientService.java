@@ -1,5 +1,6 @@
 package com.example.HamRom.service;
 
+import com.example.HamRom.dao.ClientDao;
 import com.example.HamRom.dto.ClientDto;
 import com.example.HamRom.entity.Client;
 import com.example.HamRom.repository.ClientRepository;
@@ -10,15 +11,16 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-@Transactional
-
 public class ClientService {
+
+    public ClientDao clientDao;
 
     public ClientStore clientStore;
 
     public ClientRepository repository;
 
-    public ClientService(ClientStore clientStore, ClientRepository repository) {
+    public ClientService(ClientDao clientDao, ClientStore clientStore, ClientRepository repository) {
+        this.clientDao = clientDao;
         this.clientStore = clientStore;
         this.repository = repository;
     }

@@ -15,7 +15,7 @@ import static jakarta.persistence.EnumType.STRING;
 public class Client {
 
    @Id
-   @GeneratedValue(generator = "system-uuid")
+   @GeneratedValue(generator = "system-uuid",strategy = GenerationType.IDENTITY)
    @GenericGenerator(name = "system-uuid", strategy = "uuid2")
    @Column(name = "id")
     private UUID id;
@@ -33,9 +33,7 @@ public class Client {
     @Column(name = "type")
     private ClientType type;
 
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
-    @JoinColumn(name = "id", referencedColumnName = "id", nullable = false)
-    private List<Produs> produses;
+
 
     public UUID getId() {
         return id;

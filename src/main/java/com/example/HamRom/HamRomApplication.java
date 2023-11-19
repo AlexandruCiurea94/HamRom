@@ -11,6 +11,7 @@ import static jakarta.persistence.EnumType.STRING;
 
 
 @SpringBootApplication
+@ComponentScan(basePackages = "com.example.HamRom")
 @EnableAutoConfiguration
 public class HamRomApplication {
 

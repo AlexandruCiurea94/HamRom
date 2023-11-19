@@ -4,7 +4,10 @@ import com.example.HamRom.dto.ClientDto;
 import com.example.HamRom.entity.Client;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+@Component
 @Mapper(componentModel ="spring")
 public interface IClientMappers {
 
