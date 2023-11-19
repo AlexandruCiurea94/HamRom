@@ -6,7 +6,7 @@ import org.hibernate.annotations.GenericGenerator;
 import java.util.UUID;
 
 @Entity
-@Table(name = "produs", schema ="magazin" )
+@Table(name = "produs", schema = "magazin")
 public class Produs {
     @Id
     @GeneratedValue(generator = "system-uuid", strategy = GenerationType.IDENTITY)
@@ -21,12 +21,12 @@ public class Produs {
     private int greutate;
 
 
+    public UUID getId() {
+        return id;
+    }
 
-
-    public Produs() {
-        this.calitate = calitate;
-        this.dimensiune = dimensiune;
-        this.greutate = greutate;
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public String getCalitate() {

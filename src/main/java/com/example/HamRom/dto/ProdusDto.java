@@ -2,12 +2,19 @@ package com.example.HamRom.dto;
 
 public class ProdusDto {
 
+    private String produsId;
     private String calitate;
     private int dimensiune;
     private int greutate;
 
 
+    public String getProdusId() {
+        return produsId;
+    }
 
+    public void setProdusId(String produsId) {
+        this.produsId = produsId;
+    }
 
     public String getCalitate() {
         return calitate;

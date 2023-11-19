@@ -33,7 +33,17 @@ public class Client {
     @Column(name = "type")
     private ClientType type;
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "produs_id", referencedColumnName = "id", nullable = false)
+    private List<Produs> produsList;
 
+    public List<Produs> getProdusList() {
+        return produsList;
+    }
+
+    public void setProdusList(List<Produs> produsList) {
+        this.produsList = produsList;
+    }
 
     public UUID getId() {
         return id;

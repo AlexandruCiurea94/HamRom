@@ -31,7 +31,7 @@ public class ClientController {
         return clientService.saveClients(clients);
     }
 
-   @GetMapping
+   @GetMapping("/allClients")
     public List<ClientDto> allClients(){
         return clientService.getAllClients();
     }
